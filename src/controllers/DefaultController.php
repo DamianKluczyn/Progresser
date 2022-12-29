@@ -1,7 +1,5 @@
 <?php
 
-namespace src\controllers;
-
 require_once 'AppController.php';
 
 class DefaultController extends AppController
@@ -10,19 +8,19 @@ class DefaultController extends AppController
     public function index()
     {
         //TODO dispaly login.html
-        die("index method");
+        $this -> render('login');
 
     }
 
     public function register()
     {
         //TODO display register.html
-        die("register method");
+        $this -> render('register');
     }
 
     public function boards()
     {
         //TODO display boards.html
-        die("boards method");
+        $this -> render('boards');
     }
 }
