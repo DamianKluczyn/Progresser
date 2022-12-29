@@ -21,7 +21,7 @@
                 <button class="LoginBtn">
                     Login
                 </button>
-                <a href="register.html" id="registerLink">Register</a>
+                <a href="register.php" id="registerLink">Register</a>
             </form>
         </div>
 
