@@ -1,28 +1,45 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../CSS/style.css">
-    <script src="https://kit.fontawesome.com/6265ac8798.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="../CSS/style-navbar.css">
+    <script src="../scripts/boards.js"></script>
     <title>Boards</title>
 </head>
-
 <body>
-    <div class="base-container">
-        <nav>
-            <a href="#" class = "button"><i class="fa-regular fa-gear"></i></a>
-            <a href="#" class = "button"><i class="fa-solid fa-right-from-bracket"></i></a>
-        </nav>
+    <div class="main-page">
+        <div class="navbar">
+            <span class="navbar-icon icon">&#9881;</span>
+            <span class="navbar-icon icon">&#10560;</span>
+        </div>
+        <div class="content" id="content">
+            <!-- <div class="board-icon">
+                <div class="red-section"></div>
+                <div class="board-title">Board project 1</div>
+            </div>
 
-        <main>
-            <section class="boards">
-                <div>board1</div>
-                <div>board2</div>
-                <div>board3</div>
-                <div>
-                    <i class="fa-duotone fa-plus"></i>
-                </div>
-            </section>
-        </main>
+            <div class="board-icon">
+                <div class="red-section"></div>
+                <div class="board-title">Board project 2</div>
+            </div>
 
+            <div class="board-icon">
+                <div class="red-section"></div>
+                <div class="board-title">Board project 3</div>
+            </div>
+
+            <div class="board-icon">
+                <div class="red-section"></div>
+                <div class="board-title">Board project 3</div>
+            </div> -->
+
+            <div class="cross-icon icon" onclick="onCrossClick()" id="cross">
+                <span>&#43;</span>
+            </div>
+        </div>
     </div>
-
 </body>
+</html>
