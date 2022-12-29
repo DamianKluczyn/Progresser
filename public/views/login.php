@@ -15,10 +15,19 @@
         </div>
 
         <div class="login-container">
-            <form class="login">
+            <form class="login" action="login" method="post">
                 <input name="login" type="text" placeholder="Login">
                 <input name="password" type="password" placeholder="Password">
-                <button class="LoginBtn">
+                <div class="message">
+                    <?php
+                    if(isset($messages)){
+                        foreach ($messages as $message){
+                            echo $message;
+                        }
+                    }
+                    ?>
+                </div>
+                <button class="LoginBtn" type="submit">
                     Login
                 </button>
                 <a href="register.php" id="registerLink">Register</a>
