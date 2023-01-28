@@ -1,5 +1,4 @@
 <?php
-
 require_once 'AppController.php';
 require_once __DIR__.'/../models/User.php';
 
@@ -7,6 +6,10 @@ class SecurityController extends AppController
 {
     public function login(){
         $user = new User('jnowak@pk.pl', 'nowak', 'admin');
+
+        if (!$this->isPost()){
+           return $this->render('login');
+        }
 
         $login = $_POST['login'];
         $password = $_POST['password'];
@@ -16,8 +19,11 @@ class SecurityController extends AppController
         }
 
         if($user->getPassword() !== $password){
-            return $this -> render('password',['messages' => ['Wrong password']]);
+            return $this -> render('login',['messages' => ['Wrong password']]);
         }
+
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/boards");
     }
 
 }
