@@ -14,9 +14,9 @@
             <img class="navbar-icon icon" src="public/img/settings.svg" alt="logo">
             <img class="navbar-icon icon" src="public/img/logout.svg" alt="logo">
         </div>
-        <div class="content" id="content">
+        <div class="content-form" id="content-form">
             <h1>UPLOAD</h1>
-            <form action="addBoard">
+            <form action="addBoard" method="POST" ENCTYPE="multipart/form-data">
                 <?php
                 if(isset($messages)){
                     foreach ($messages as $message){
@@ -28,7 +28,7 @@
                 <textarea name="description" rows="5" placeholder="description"></textarea>
 
                 <input name="file" type="file">
-                <button type="submit">send</button>
+                <button type="submit" class="FileBtn">send</button>
             </form>
         </div>
     </div>
