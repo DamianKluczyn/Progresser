@@ -14,19 +14,20 @@
             <img class="navbar-icon icon" src="public/img/settings.svg" alt="logo">
             <img class="navbar-icon icon" src="public/img/logout.svg" alt="logo">
         </div>
+
         <div class="content">
-            <div id="board-1">
+            <div class="board">
                 <div class="red-section">
                     <div class="board-icon">
-                        <img src="public/uploads/1.jpg">
+                       <img src="public/uploads/1.jpg" width= 300 class="borad-img">
                     </div>
                     <div class="board-title">
                         title
                     </div>
                 </div>
-
             </div>
         </div>
+
     </div>
 </body>
 </html>
