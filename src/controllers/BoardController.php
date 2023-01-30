@@ -1,6 +1,7 @@
 <?php
 require_once 'AppController.php';
 require_once __DIR__.'/../models/Board.php';
+require_once __DIR__.'/../repository/BoardRepository.php';
 
 
 class BoardController extends AppController {
@@ -10,6 +11,13 @@ class BoardController extends AppController {
     const UPLOAD_DIRECTORY = '/../public/uploads/';
 
     private $messages = [];
+    private $board_repository;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->board_repository = new BoardRepository();
+    }
 
     public function addBoard() {
         if($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
@@ -19,7 +27,8 @@ class BoardController extends AppController {
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
 
-            $board = new Board($_POST['title'], $_POST['description'], $_FILES['file']['name']);
+            $board = new Board($_POST['title'], $_FILES['file']['name']);
+            $this->board_repository->addBoard($board);
 
             return $this->render("boards", ['messages' => $this->messages, 'board' => $board]);
         }

@@ -3,14 +3,13 @@
 class Board
 {
     private $title;
-    private $description;
-    private $image;
 
-    public function __construct($title, $description, $image)
+    private $background_img;
+
+    public function __construct($title, $background_img)
     {
         $this->title = $title;
-        $this->description = $description;
-        $this->image = $image;
+        $this->background_img = $background_img;
     }
 
     public function getTitle(): string
@@ -23,24 +22,14 @@ class Board
         $this->title = $title;
     }
 
-    public function getDescription(): string
+    public function getBackground_img(): string
     {
-        return $this->description;
+        return $this->background_img;
     }
 
-    public function setDescription(string $description)
+    public function setBackground_img(string $background_img)
     {
-        $this->description = $description;
-    }
-
-    public function getImage(): string
-    {
-        return $this->image;
-    }
-
-    public function setImage(string $image)
-    {
-        $this->image = $image;
+        $this->background_img = $background_img;
     }
 
 
