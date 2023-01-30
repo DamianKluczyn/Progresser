@@ -25,8 +25,6 @@
                 }
                 ?>
                 <input name="title" type="text" placeholder="title">
-                <textarea name="description" rows="5" placeholder="description"></textarea>
-
                 <input name="file" type="file">
                 <button type="submit" class="FileBtn">send</button>
             </form>

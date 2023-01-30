@@ -200,3 +200,11 @@ button:hover {
     display: flex;
     flex-direction: column;
 }
+
+/* TODO naprawic */
+.board-icon{
+    height: 70%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 1em 1em 0 0;
+}

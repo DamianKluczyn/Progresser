@@ -14,9 +14,17 @@
             <img class="navbar-icon icon" src="public/img/settings.svg" alt="logo">
             <img class="navbar-icon icon" src="public/img/logout.svg" alt="logo">
         </div>
-        <div class="content" id="content">
-            <div class="cross-icon icon" onclick="onCrossClick()" id="cross">
-                <span>&#43;</span>
+        <div class="content">
+            <div id="board-1">
+                <div class="red-section">
+                    <div class="board-icon">
+                        <img src="public/uploads/1.jpg">
+                    </div>
+                    <div class="board-title">
+                        title
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
