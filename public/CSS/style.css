@@ -48,6 +48,11 @@ button.LoginBtn, button.RegisterBtn, button.FileBtn {
     font-size: 1em;
 }
 
+button:hover {
+    cursor: pointer;
+    color: rgb(179, 179, 179)
+}
+
 input, textarea{
     background-color: transparent;
     font-size: 0.75em;
@@ -73,11 +78,6 @@ input, textarea{
 
 .registerLink:hover {
     color:#01000058;
-}
-
-button:hover {
-    cursor: pointer;
-    color: rgb(179, 179, 179)
 }
 
 .navbar {
@@ -111,6 +111,24 @@ button:hover {
     align-items: flex-start;
     justify-content: flex-start;
     flex-wrap: wrap;
+}
+
+.red-section {
+    padding-top: 5%;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(138, 26, 26);
+    border-radius: 15px;
+}
+
+/*TODO FLEXBOX*/
+.board{
+    width: 30%;
+    height: 100%;
+}
+
+.board-title {
+    text-align: center;
 }
 
 .board-icon {
@@ -158,24 +176,6 @@ button:hover {
     cursor: pointer;
 }
 
-.red-section {
-    padding-top: 5%;
-    height: 100%;
-    width: 100%;
-    background-color: rgb(138, 26, 26);
-    border-radius: 15px;
-}
-
-.board-title {
-    text-align: center;
-}
-
-
-/*TODO FLEXBOX*/
-.board{
-    width: 30%;
-    height: 100%;
-}
 
 @media only screen and (max-device-width: 420px){
     *{
