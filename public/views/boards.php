@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" type="text/css" href="public/CSS/style.css">
-    <script src="public/scripts/boards.js"></script>
     <title>Boards</title>
 </head>
 <body>
@@ -16,16 +16,19 @@
         </div>
 
         <div class="content">
+
+            <?php foreach($boards as $board): ?>
             <div class="board">
                 <div class="red-section">
                     <div class="board-icon">
-                       <img src="public/uploads/1.jpg" width= 300 class="borad-img">
+                       <img src="public/uploads/<?= $board->getBackground_img() ?>" class="board-img">
                     </div>
                     <div class="board-title">
-                        title
+                        <?= $board -> getTitle(); ?>
                     </div>
                 </div>
             </div>
+            <?php endforeach; ?>
         </div>
 
     </div>

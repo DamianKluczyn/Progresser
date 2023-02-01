@@ -11,12 +11,18 @@ class BoardController extends AppController {
     const UPLOAD_DIRECTORY = '/../public/uploads/';
 
     private $messages = [];
-    private $board_repository;
+    private $boardRepository;
 
     public function __construct()
     {
         parent::__construct();
-        $this->board_repository = new BoardRepository();
+        $this->boardRepository = new BoardRepository();
+    }
+
+    public function boards()
+    {
+        $boards = $this->boardRepository->getBoards();
+        $this -> render('boards',['boards' => $boards]);
     }
 
     public function addBoard() {
@@ -27,8 +33,9 @@ class BoardController extends AppController {
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
 
+            // TODO dodawanie boardow
             $board = new Board($_POST['title'], $_FILES['file']['name']);
-            $this->board_repository->addBoard($board);
+            $this->boardRepository->addBoard($board);
 
             return $this->render("boards", ['messages' => $this->messages, 'board' => $board]);
         }
