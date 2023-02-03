@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal" created-in="PS-223.8214.64">
+    <data-source name="d2q163hlsvc4da@ec2-52-48-159-67.eu-west-1.compute.amazonaws.com" uuid="e542a377-deb6-4ef4-bcff-8aaafae9fcd5">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="POSTGRES" exact-version="0" />
+      <schema-mapping />
+    </data-source>
+  </component>
+</project>

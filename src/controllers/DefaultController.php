@@ -18,9 +18,5 @@ class DefaultController extends AppController
         $this -> render('register');
     }
 
-    public function boards()
-    {
-        //TODO display boards.php
-        $this -> render('boards');
-    }
+
 }

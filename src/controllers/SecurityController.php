@@ -35,4 +35,6 @@ class SecurityController extends AppController
         header("Location: {$url}/boards");
     }
 
+    //TODO register + routing z index
+
 }

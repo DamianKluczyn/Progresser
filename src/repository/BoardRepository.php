@@ -40,4 +40,23 @@ class BoardRepository extends Repository {
             $id_created_by
         ]);
     }
+
+    public  function getBoards(): array {
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM public.board;
+        ');
+        $stmt -> execute();
+        $boards = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($boards as $board) {
+            $result[] = new Board(
+                $board['title'],
+                $board['background_img']
+            );
+        }
+
+        return $result;
+    }
 }
