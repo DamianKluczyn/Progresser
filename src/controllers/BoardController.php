@@ -37,10 +37,13 @@ class BoardController extends AppController {
             $board = new Board($_POST['title'], $_FILES['file']['name']);
             $this->boardRepository->addBoard($board);
 
-            return $this->render("boards", ['messages' => $this->messages, 'board' => $board]);
+            return $this->render("boards", [
+                'messages' => $this->messages,
+                'boards' => $this->boardRepository->getBoards()
+            ]);
         }
 
-        $this->render('add_board', ['messages' => $this->messages]);
+        return $this->render('add_board', ['messages' => $this->messages]);
     }
 
     private function validate(array $file): bool

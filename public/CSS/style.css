@@ -127,6 +127,7 @@ input, textarea{
     height: 100%;
     margin-left: 1%;
     margin-right: 1%;
+    margin-bottom: 3%;
 }
 
 .board-title {
