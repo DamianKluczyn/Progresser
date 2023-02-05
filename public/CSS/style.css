@@ -214,3 +214,7 @@ input, textarea{
     flex-direction: column;
 }
 
+/* TODO podkreslenie ze jest zle */
+.no-valid {
+
+}
