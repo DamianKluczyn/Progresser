@@ -25,4 +25,21 @@ class UserRepository extends Repository {
             $user['password']
         );
     }
+
+    public function addUser(User $user) {
+        $stmt = $this -> database -> connect() -> prepare('
+        INSERT INTO users (email, login, password, salt)
+        VALUES (?, ?, ?, ?)
+        ');
+
+        //TODO pobranie soli
+        $salt = 'sol';
+
+        $stmt -> execute([
+            $user -> getEmail(),
+            $user -> getLogin(),
+            $user -> getPassword(),
+            $salt
+        ]);
+    }
 }

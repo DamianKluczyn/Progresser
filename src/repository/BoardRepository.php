@@ -47,6 +47,7 @@ class BoardRepository extends Repository {
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM public.board;
         ');
+
         $stmt -> execute();
         $boards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

@@ -15,12 +15,21 @@
         </div>
 
         <div class="register-container">
-            <form class="register">
+            <form class="register" action="register" method="post">
                 <input name="login" type="text" placeholder="Login">
                 <input name="email" type="text" placeholder="Email">
                 <input name="password" type="password" placeholder="Password">
-                <input name="passwordConfirmation" type="password" placeholder="Repeat password">
-                <button class="RegisterBtn">
+                <input name="confirmedPassword" type="password" placeholder="Repeat password">
+                <div class="message">
+                    <?php
+                    if(isset($messages)){
+                        foreach ($messages as $message){
+                            echo $message;
+                        }
+                    }
+                    ?>
+                </div>
+                <button class="RegisterBtn" type="submit">
                     Register
                 </button>
             </form>

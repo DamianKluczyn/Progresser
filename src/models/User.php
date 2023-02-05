@@ -15,7 +15,7 @@ class User
 
     public function getEmail(): string
     {
-        return $this->email;
+        return $this -> email;
     }
 
     public function setEmail(string $email)
@@ -25,7 +25,7 @@ class User
 
     public function getLogin(): string
     {
-        return $this->login;
+        return $this -> login;
     }
 
     public function setLogin(string $login)
@@ -35,7 +35,7 @@ class User
 
     public function getPassword(): string
     {
-        return $this->password;
+        return $this -> password;
     }
 
     public function setPassword(string $password)
