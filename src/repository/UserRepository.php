@@ -15,7 +15,6 @@ class UserRepository extends Repository {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user == false) {
-            //TODO wyjatek zamiast nulla ktorego odbierze security controller w login()
             return null;
         }
 

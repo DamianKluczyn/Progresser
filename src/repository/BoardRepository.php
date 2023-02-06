@@ -15,7 +15,6 @@ class BoardRepository extends Repository {
         $board = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($board == false) {
-            //TODO wyjatek zamiast nulla ktorego odbierze security controller w login()
             return null;
         }
 

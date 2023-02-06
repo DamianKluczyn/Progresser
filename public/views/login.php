@@ -13,7 +13,7 @@
         <div class="logo">
             <img src="public/img/logo.svg" alt="logo">
         </div>
-
+        <!-- TODO user premium - nielimitowana liczba boardow, user normalny max 5 -->
         <div class="login-container">
             <form class="login" action="login" method="post">
                 <input name="login" type="text" placeholder="Login">

@@ -14,6 +14,7 @@
             <img class="navbar-icon icon" src="public/img/settings.svg" alt="logo">
             <img class="navbar-icon icon" src="public/img/logout.svg" alt="logo">
         </div>
+        <!-- TODO przy odswiezeniu strony automatycznie sie dodaja kolejne boardy -->
         <div class="content-form" id="content-form">
             <h1>UPLOAD</h1>
             <form action="addBoard" method="POST" ENCTYPE="multipart/form-data">
