@@ -6,6 +6,10 @@ function isEmail(email) {
     return /\S+@\S+\.\S+/.test(email);
 }
 
+function isPassword(password) {
+    return /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,16}/.test(password)
+}
+
 function arePasswordsSame(password, confirmedPassword) {
     return password === confirmedPassword;
 }
@@ -22,14 +26,15 @@ function validateEmail() {
         1);
 }
 
-// TODO sprawdzanie zlozonosci hasla
+// TODO sprawdzanie zlozonosci hasla ????
 function validatePassword() {
     setTimeout(
         function () {
-            const condition = arePasswordsSame(
+            const condition = (arePasswordsSame(
                 confirmedPasswordInput.previousElementSibling.value,
                 confirmedPasswordInput.value
-            );
+            ) &&
+                isPassword(confirmedPasswordInput.previousElementSibling.value));
             markValidation(confirmedPasswordInput, condition);
         },
         1);
