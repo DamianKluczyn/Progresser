@@ -1,9 +1,15 @@
-body{
+body {
     margin: 0;
-    background: linear-gradient(116.82deg, #483C60 0%, rgba(69, 69, 92, 0.95) 0%, #29457A 100%);
+    background-size: 100%;
+    background: linear-gradient(
+            116.82deg,
+            #483c60 0%,
+            rgba(69, 69, 92, 0.95) 0%,
+            #29457a 100%
+    );
 }
 
-.container{
+.container {
     width: 100%;
     height: 100%;
     display: flex;
@@ -12,72 +18,84 @@ body{
     align-items: center;
 }
 
-.logo{
-    width: 100%;
-    height: 30%;
+.logo {
+    width: max(250px, 60vw);
     text-align: left;
 }
 
-.login-container, .register-container{
+.logo img {
+    width: 100%;
+}
+
+.login-container,
+.register-container {
     width: 100%;
     height: 70%;
 }
 
-form.login, form.register{
+form.login,
+form.register {
     padding-top: 3vh;
     padding-bottom: 3vh;
-    width: 20%;
+    width: max(20vw, 300px);
     margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #D9D9D9;
+    background: #d9d9d9;
     box-shadow: 0 16px 16px rgba(0, 0, 0, 0.25);
     border-radius: 30px;
 }
 
-button.LoginBtn, button.RegisterBtn, button.FileBtn {
-    background: #6D253E;
-    border-radius: 2em;
+button.LoginBtn,
+button.RegisterBtn,
+button.FileBtn {
+    background: #6d253e;
+    border: 3px solid #6d253e !important;
+    border-radius: 20px;
     width: 50%;
     line-height: 2.5em;
     border: none;
     color: white;
     margin: 1em;
-    font-size: 1em;
+
+    font-size: 20px;
 }
 
 button:hover {
     cursor: pointer;
-    color: rgb(179, 179, 179)
+    color: #6d253e;
+    background-color: #d9d9d9;
 }
 
-input, textarea{
+input,
+textarea {
     background-color: transparent;
-    font-size: 0.75em;
-    border-color: #6D253E;
-    border-width: 0.2em;
-    padding: 0.75em;
-    margin: 1em;
+    font-size: 20px;
+    border: 3px solid #6d253e;
+    padding: 10px;
+    margin: 12px;
     width: 80%;
     line-height: 2.5em;
-    border-radius: 2em;
+    border-radius: 20px;
+    outline: none;
 }
 
-.registerLink {
-    font-size: 1em;
+#registerLink {
+    font-size: 20px;
     text-decoration: none;
     margin-bottom: 1em;
+    color: black;
 }
 
-.registerLink:visited {
+#registerLink:visited {
     color: black;
     text-decoration: none;
 }
 
-.registerLink:hover {
-    color:#01000058;
+#registerLink:hover {
+    color: #01000058;
 }
 
 .navbar {
@@ -85,18 +103,22 @@ input, textarea{
     padding-right: 2%;
     /* margin-left: auto; */
     justify-content: flex-end;
+    height: 80px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 30px;
 }
 
 .navbar-icon {
-    height: 5em;
-    width: 5em;
-    margin: 3.5vh;
+    height: 50px;
+    width: 50px;
 }
 
 .navbar-icon:hover {
     cursor: pointer;
-    height: 5.5em;
-    width: 5.5em;
+    height: 60px;
+    width: 60px;
 }
 
 .main-page {
@@ -105,11 +127,11 @@ input, textarea{
 }
 
 .content {
-    height: 30vh;
-    padding-left: 4%;
+    width: calc(100% - 60px);
+    padding: 0 30px;
     display: flex;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: space-around;
     flex-wrap: wrap;
 }
 
@@ -122,12 +144,10 @@ input, textarea{
 }
 
 /*TODO FLEXBOX*/
-.board{
-    width: 30%;
-    height: 100%;
-    margin-left: 1%;
-    margin-right: 1%;
-    margin-bottom: 3%;
+.board {
+    width: max(250px, 30%);
+    height: 300px;
+    margin-bottom: 40px;
 }
 
 .board-title {
@@ -137,10 +157,8 @@ input, textarea{
 .board-icon {
     display: flex;
     flex-direction: column;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-bottom: 5%;
-    width: 80%;
+    margin: 0 auto 20px;
+    width: 70%;
     background-color: white;
     height: 70%;
     border-radius: 25px;
@@ -150,9 +168,9 @@ input, textarea{
 .board-icon:hover {
     cursor: pointer;
 }
-.board-img{
+.board-img {
     width: 100%;
-    height: 100%
+    height: 100%;
 }
 
 .cross-icon {
@@ -180,41 +198,40 @@ input, textarea{
     cursor: pointer;
 }
 
-
-@media only screen and (max-device-width: 420px){
-    *{
-        font-size: 45px;
+@media only screen and (max-device-width: 420px) {
+    * {
+        font-size: 15px !important;
     }
-    .logo{
-        height: 25%;
-        padding-top: 5%;
-    }
-    .login-container{
-        width: 80%;
-        height: 70%;
-    }
-    form{
-        width: 90%;
-        height: 60%;
-        margin: auto;
-    }
-    img{
-        height: 6em;
-    }
+    /* .logo {
+          height: 25%;
+          padding-top: 5%;
+      } */
+    /* .login-container {
+          width: 80%;
+          height: 70%;
+      }
+      form {
+          width: 90%;
+          height: 60%;
+          margin: auto;
+      } */
 }
 
-.content-form{
+.content-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    width: max(20vw, 300px);
 }
 
-.content-form > form{
+.content-form > form {
     display: flex;
     flex-direction: column;
 }
 
 /* TODO podkreslenie ze jest zle */
 .no-valid {
-
+    border-color: red;
+    box-shadow: inset 0 0 5px red;
 }
