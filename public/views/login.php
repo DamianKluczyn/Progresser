@@ -30,7 +30,7 @@
                 <button class="LoginBtn" type="submit">
                     Login
                 </button>
-                <a href="register.php" id="registerLink">Register</a>
+                <a href="register" id="registerLink">Register</a>
             </form>
         </div>
 

@@ -1,6 +1,7 @@
 const form = document.querySelector("form");
 const emailInput = form.querySelector('input[name="email"]');
 const confirmedPasswordInput = form.querySelector('input[name="confirmedPassword"]');
+const passwordInput = form.querySelector('input[name="password"]');
 
 function isEmail(email) {
     return /\S+@\S+\.\S+/.test(email);
@@ -26,20 +27,18 @@ function validateEmail() {
         1);
 }
 
-// TODO sprawdzanie zlozonosci hasla ????
-function validatePassword() {
+
+function samePassword() {
     setTimeout(
         function () {
             const condition = (arePasswordsSame(
                 confirmedPasswordInput.previousElementSibling.value,
-                confirmedPasswordInput.value
-            ) &&
-                isPassword(confirmedPasswordInput.previousElementSibling.value));
-            markValidation(confirmedPasswordInput, condition);
-        },
+                confirmedPasswordInput.value)) },
         1);
 }
 
 emailInput.addEventListener('keyup', validateEmail);
 
-confirmedPasswordInput.addEventListener('keyup', validatePassword);
+confirmedPasswordInput.addEventListener('keyup', samePassword);
+
+passwordInput.addEventListener('')
