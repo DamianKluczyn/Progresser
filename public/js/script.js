@@ -28,7 +28,9 @@ function samePassword() {
         function () {
             const condition = (arePasswordsSame(
                 confirmedPasswordInput.previousElementSibling.value,
-                confirmedPasswordInput.value)) },
+                confirmedPasswordInput.value))
+            markValidation(confirmedPasswordInput, condition);
+            },
         1);
 }
 

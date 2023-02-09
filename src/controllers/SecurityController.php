@@ -13,11 +13,11 @@ class SecurityController extends AppController {
         $this -> userRepository = new UserRepository();
     }
 
-    public function hash(?string $password): string {
+    public function hash(string $password): string {
         return password_hash($password, PASSWORD_DEFAULT);
     }
 
-    public function decrypt(?string $password, ?string $hashed): bool {
+    public function decrypt(string $password, string $hashed): bool {
         return password_verify($password, $hashed);
     }
 
@@ -36,11 +36,11 @@ class SecurityController extends AppController {
             return $this -> render('login',['messages' => ['User not exist!']]);
         }
 
-        if($user -> getLogin() !== $login) {
+        if(($user -> getLogin()) !== $login) {
             return $this -> render('login',['messages' => ['User with this login not exist!']]);
         }
 
-        if($this -> decrypt($user -> getPassword()) !== $password) {
+        if(!($this -> decrypt($password, $user -> getPassword()))) {
             return $this -> render('login',['messages' => ['Wrong password']]);
         }
 
@@ -62,6 +62,11 @@ class SecurityController extends AppController {
         $password = $_POST['password'];
         $confirmedPassword = $_POST['confirmedPassword'];
         $passwordRegex = '/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,16}/';
+        $emailRegex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
+
+        if(!preg_match($emailRegex, $email)) {
+            return $this -> render('register', ['messages' => ['Invalid email!']]);
+        }
 
         if(!preg_match($passwordRegex, $password)) {
             return $this -> render('register', ['messages' => ['Password too weak or too long! (8-16 characters, 1 small and capital letter, number, special character)']]);
@@ -74,7 +79,7 @@ class SecurityController extends AppController {
 
         $user = new User($email, $login, $password);
 
-        $tmpEmail = $this -> userRepository -> getUser($user -> getEmail());
+        $tmpEmail = $this -> userRepository -> getUser($user -> getLogin());
         if($email == $tmpEmail) {
             return $this -> render('register', ['messages' => ['Email already taken!']]);
         }

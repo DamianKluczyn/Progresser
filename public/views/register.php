@@ -22,12 +22,13 @@
                 <input name="password" type="password" placeholder="Password">
                 <input name="confirmedPassword" type="password" placeholder="Repeat password">
                 <div class="message">
+                    <!-- TODO nie dziala formatowanie -->
                     <?php
-                    if(isset($messages)){
-                        foreach ($messages as $message){
-                            echo $message;
+                        if(isset($messages)){
+                            foreach ($messages as $message){
+                                echo $message;
+                            }
                         }
-                    }
                     ?>
                 </div>
                 <button class="RegisterBtn" type="submit">
