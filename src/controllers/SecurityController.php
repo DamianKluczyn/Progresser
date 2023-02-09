@@ -13,10 +13,18 @@ class SecurityController extends AppController {
         $this -> userRepository = new UserRepository();
     }
 
+    public function hash(?string $password): string {
+        return password_hash($password, PASSWORD_DEFAULT);
+    }
+
+    public function decrypt(?string $password, ?string $hashed): bool {
+        return password_verify($password, $hashed);
+    }
+
     public function login() {
 
-        if (!$this->isPost()) {
-           return $this -> render('login');
+        if (!$this -> isPost()) {
+            return $this -> render('login');
         }
 
         $login = $_POST['login'];
@@ -28,17 +36,20 @@ class SecurityController extends AppController {
             return $this -> render('login',['messages' => ['User not exist!']]);
         }
 
-        if($user->getLogin() !== $login) {
+        if($user -> getLogin() !== $login) {
             return $this -> render('login',['messages' => ['User with this login not exist!']]);
         }
 
-        if($user->getPassword() !== $password) {
+        if($this -> decrypt($user -> getPassword()) !== $password) {
             return $this -> render('login',['messages' => ['Wrong password']]);
         }
+
+        /* TODO cookies */
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/boards");
     }
+
 
     public function register() {
 
@@ -50,16 +61,32 @@ class SecurityController extends AppController {
         $email = $_POST['email'];
         $password = $_POST['password'];
         $confirmedPassword = $_POST['confirmedPassword'];
+        $passwordRegex = '/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,16}/';
+
+        if(!preg_match($passwordRegex, $password)) {
+            return $this -> render('register', ['messages' => ['Password too weak or too long! (8-16 characters, 1 small and capital letter, number, special character)']]);
+        }
 
         if($password !== $confirmedPassword) {
             return $this -> render('register', ['messages' => ['Passwords must be the same!']]);
         }
+        $password = $this -> hash($password);
 
-        // TODO hashowanie
         $user = new User($email, $login, $password);
+
+        $tmpEmail = $this -> userRepository -> getUser($user -> getEmail());
+        if($email == $tmpEmail) {
+            return $this -> render('register', ['messages' => ['Email already taken!']]);
+        }
+
+        $tmpLogin = $this -> userRepository -> getUser($user -> getLogin());
+        if($login == $tmpLogin) {
+            return $this -> render('register', ['messages' => ['Login already taken!']]);
+        }
 
         $this -> userRepository -> addUser($user);
 
+        /* TODO cookies */
         return $this -> render('login', ['messages' => ['Register successful!']]);
     }
 

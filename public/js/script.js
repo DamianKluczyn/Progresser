@@ -1,14 +1,9 @@
 const form = document.querySelector("form");
 const emailInput = form.querySelector('input[name="email"]');
 const confirmedPasswordInput = form.querySelector('input[name="confirmedPassword"]');
-const passwordInput = form.querySelector('input[name="password"]');
 
 function isEmail(email) {
     return /\S+@\S+\.\S+/.test(email);
-}
-
-function isPassword(password) {
-    return /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,16}/.test(password)
 }
 
 function arePasswordsSame(password, confirmedPassword) {
@@ -41,4 +36,3 @@ emailInput.addEventListener('keyup', validateEmail);
 
 confirmedPasswordInput.addEventListener('keyup', samePassword);
 
-passwordInput.addEventListener('')
