@@ -43,7 +43,7 @@ class BoardController extends AppController {
             ]);
         }
 
-        return $this->render('add_board', ['messages' => $this->messages]);
+        return $this->render('addBoard', ['messages' => $this->messages]);
     }
 
     private function validate(array $file): bool

@@ -31,7 +31,7 @@ class BoardRepository extends Repository {
         ');
 
         // TODO pobrac z sesji
-        $id_created_by = 1;
+        $id_created_by = 7;
 
         $stmt->execute([
             $board->getTitle(),
