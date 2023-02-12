@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce502ee1-7674-498e-8bbf-186991643c4b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/controllers/CookieController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/BoardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/BoardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/CookieController.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/SecurityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Board.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Board.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repository/BoardRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/BoardRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/UserRepository.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

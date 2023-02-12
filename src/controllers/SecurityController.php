@@ -36,10 +36,6 @@ class SecurityController extends AppController {
             return $this -> render('login',['messages' => ['Wrong password']]);
         }
 
-        $cookie_name = "user_id";
-        $cookie_value = $this -> encryptCookie($this -> userRepository -> getId($user -> getLogin()));
-        setcookie($cookie_name, $cookie_value, 0, "/");
-
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/boards");
     }
@@ -85,10 +81,6 @@ class SecurityController extends AppController {
 
         $this -> userRepository -> addUser($user);
 
-        $cookie_name = "user_id";
-        $cookie_value = $this -> encryptCookie($this -> userRepository -> getId($user -> getLogin()));
-        setcookie($cookie_name, $cookie_value, 0, "/");
-
         return $this -> render('login', ['messages' => ['Register successful!']]);
     }
 
@@ -100,12 +92,6 @@ class SecurityController extends AppController {
         return password_verify($password, $hashed);
     }
 
-    private function encryptCookie(string $x): string {
-        return strval(openssl_encrypt($x, "AES-128-CTR", "Progresser", 0, '1234567890'));
-    }
 
-    private function decryptCookie(string $x): string {
-        return openssl_decrypt($x, "AES-128-CTR", "Progresser", 0, '1234567890');
-    }
 
 }

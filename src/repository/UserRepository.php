@@ -19,6 +19,7 @@ class UserRepository extends Repository {
             return null;
         }
 
+        $_SESSION['id_user'] = $user['id_user'];
         return new User(
             $user['email'],
             $user['login'],
@@ -28,16 +29,27 @@ class UserRepository extends Repository {
 
     public function addUser(User $user) {
 
-        $stmt = $this -> database -> connect() -> prepare('
-        INSERT INTO users (email, login, password)
-        VALUES (?, ?, ?)
-        ');
+        $connection = $this -> database -> connect();
+        try {
+            $connection -> beginTransaction();
+            $stmt = $this->database->connect()->prepare('
+            INSERT INTO users (email, login, password)
+            VALUES (?, ?, ?)
+            ');
 
-        $stmt -> execute([
-            $user -> getEmail(),
-            $user -> getLogin(),
-            $user -> getPassword(),
-        ]);
+            $stmt->execute([
+                $user->getEmail(),
+                $user->getLogin(),
+                $user->getPassword(),
+            ]);
+
+            $connection -> commit();
+            return true;
+
+        } catch (PDOException $exception) {
+            $connection -> rollBack();
+            return false;
+        }
     }
 
     public function getUserById(string $id_user): ?User {
@@ -54,6 +66,7 @@ class UserRepository extends Repository {
             return null;
         }
 
+        $_SESSION['id_user'] = $user['id_user'];
         return new User(
             $user['email'],
             $user['login'],
@@ -77,9 +90,5 @@ class UserRepository extends Repository {
         return $userId['id_user'];
     }
 
-    private function decryptCookie(string $x): string
-    {
-        return openssl_decrypt($x, "AES-128-CTR", "Progresser", 0, '1234567890');
-    }
 
 }

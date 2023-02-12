@@ -21,7 +21,8 @@ class BoardController extends AppController {
 
     public function boards()
     {
-        $boards = $this->boardRepository->getBoards();
+        $_SESSION['id_user'];
+        $boards = $this->boardRepository->getBoards($_SESSION['id_user']);
         $this -> render('boards',['boards' => $boards]);
     }
 
@@ -34,7 +35,7 @@ class BoardController extends AppController {
             );
 
             // TODO dodawanie boardow
-            $board = new Board($_POST['title'], $_FILES['file']['name']);
+            $board = new Board($_POST['title'], $_FILES['file']['name'], $_SESSION['id_user']);
             $this->boardRepository->addBoard($board);
 
             return $this->render("boards", [

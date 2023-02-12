@@ -25,29 +25,29 @@ class BoardRepository extends Repository {
     }
 
     public function addBoard(Board $board): void {
+
         $stmt = $this->database->connect()->prepare('
             INSERT INTO public.board (title, background_img, id_created_by)
             VALUES(?, ?, ?)
         ');
 
-        // TODO pobrac z sesji
-        $id_created_by = 7;
 
         $stmt->execute([
             $board->getTitle(),
             $board->getBackground_img(),
-            $id_created_by
+            $board->getUserId()
         ]);
     }
 
-    public  function getBoards(): array {
+    public  function getBoards(int $user_id): array {
         $result = [];
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM public.board;
+            SELECT * FROM public.board WHERE id_created_by = :user_id;
         ');
-
+        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $stmt -> execute();
+
         $boards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($boards as $board) {
