@@ -13,14 +13,6 @@ class SecurityController extends AppController {
         $this -> userRepository = new UserRepository();
     }
 
-    public function hash(string $password): string {
-        return password_hash($password, PASSWORD_DEFAULT);
-    }
-
-    public function decrypt(string $password, string $hashed): bool {
-        return password_verify($password, $hashed);
-    }
-
     public function login() {
 
         if (!$this -> isPost()) {
@@ -44,7 +36,9 @@ class SecurityController extends AppController {
             return $this -> render('login',['messages' => ['Wrong password']]);
         }
 
-        /* TODO cookies */
+        $cookie_name = "user_id";
+        $cookie_value = $this -> encryptCookie($this -> userRepository -> getId($user -> getLogin()));
+        setcookie($cookie_name, $cookie_value, 0, "/");
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/boards");
@@ -91,8 +85,27 @@ class SecurityController extends AppController {
 
         $this -> userRepository -> addUser($user);
 
-        /* TODO cookies */
+        $cookie_name = "user_id";
+        $cookie_value = $this -> encryptCookie($this -> userRepository -> getId($user -> getLogin()));
+        setcookie($cookie_name, $cookie_value, 0, "/");
+
         return $this -> render('login', ['messages' => ['Register successful!']]);
+    }
+
+    public function hash(string $password): string {
+        return password_hash($password, PASSWORD_DEFAULT);
+    }
+
+    public function decrypt(string $password, string $hashed): bool {
+        return password_verify($password, $hashed);
+    }
+
+    private function encryptCookie(string $x): string {
+        return strval(openssl_encrypt($x, "AES-128-CTR", "Progresser", 0, '1234567890'));
+    }
+
+    private function decryptCookie(string $x): string {
+        return openssl_decrypt($x, "AES-128-CTR", "Progresser", 0, '1234567890');
     }
 
 }
