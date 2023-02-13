@@ -2,14 +2,14 @@
 
 class Board
 {
-
+    private $id_board;
     private $title;
-
     private $background_img;
     private $id_user;
 
-    public function __construct($title, $background_img, $id_user)
+    public function __construct($id_board, $title, $background_img, $id_user)
     {
+        $this->id_board = $id_board;
         $this->title = $title;
         $this->background_img = $background_img;
         $this->id_user = $id_user;
@@ -45,15 +45,9 @@ class Board
         $this->user_id = $user_id;
     }
 
-    public function getIdBoard(): string {
-        $stmt = $this->database->connect()->prepare('
-            SELECT id_board FROM public.board WHERE id_created_by = :id_user AND title = :title;
-        ');
-
-        $stmt->bindParam(':id_user', $this -> getUserId(), PDO::PARAM_INT);
-        $stmt->bindParam(':title', $this -> getTitle(), PDO::PARAM_STR);
-        $stmt -> execute();
-        return $stmt->fetchOne(PDO::FETCH_ASSOC);
+    public function getIdBoard()
+    {
+        return $this->id_board;
     }
 
 }

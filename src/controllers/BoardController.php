@@ -32,8 +32,6 @@ class BoardController extends AppController {
         $this -> render('task_board',['lists' => $lists]);
     }
 
-
-
     public function addBoard() {
         if($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
 
@@ -42,13 +40,16 @@ class BoardController extends AppController {
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
 
-            $board = new Board($_POST['title'], $_FILES['file']['name'], $_SESSION['id_user']);
+            $board = new Board("", $_POST['title'], $_FILES['file']['name'], $_SESSION['id_user']);
             $this->boardRepository->addBoard($board);
 
-            return $this->render("boards", [
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/boards");
+
+            /*return $this->render("boards", [
                 'messages' => $this->messages,
                 'boards' => $this->boardRepository->getBoards($_SESSION['id_user'])
-            ]);
+            ]);*/
         }
 
         return $this->render('add_board', ['messages' => $this->messages]);

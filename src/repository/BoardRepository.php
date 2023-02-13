@@ -33,6 +33,7 @@ class BoardRepository extends Repository {
 
         foreach ($boards as $board) {
             $result[] = new Board(
+                $board['id_board'],
                 $board['title'],
                 $board['background_img'],
                 $user_id
@@ -46,8 +47,8 @@ class BoardRepository extends Repository {
         $result =[];
 
         $stmt = $this -> database-> connect() -> prepare('
-            SELECT l."id_board_FK" as id_board, l.id_list as id_list, l.order as l_order, l.list_name as l_title, t.id_task as id_task, t.priority as t_priority, t.difficulty as t_difficulty, t.name as t_name
-            FROM public.list l JOIN public.task t on l.id_list = t.id_list_fk
+            SELECT l."id_board_FK" as id_board, l.id_list as id_list, l.order as l_order, l.list_name as l_title
+            FROM public.list l
             WHERE "id_board_FK" = :id_board;
         ');
 
@@ -60,12 +61,33 @@ class BoardRepository extends Repository {
                 $list['id_board'],
                 $list['id_list'],
                 $list['l_order'],
-                $list['l_title'],
-                $list['id_task'],
-                $list['t_priority'],
-                $list['t_difficulty'],
-                $list['t_name']
+                $list['l_title']
+            );
+        }
 
+        return $result;
+    }
+
+    public function getTasks(int $id_list): array{
+        $result =[];
+
+        $stmt = $this -> database-> connect() -> prepare('
+            SELECT t."id_list_fk" as id_list, t.id_task as id_task, t.priority as t_priority, t.difficulty as t_difficulty, t.name as t_name
+            FROM public.task t
+            WHERE "id_list_fk" = :id_list;
+        ');
+
+        $stmt->bindParam(':id_list', $id_list, PDO::PARAM_INT);
+        $stmt -> execute();
+        $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($tasks as $task) {
+            $result[] = new Task(
+                $task['id_list'],
+                $task['id_task'],
+                $task['t_priority'],
+                $task['t_difficulty'],
+                $task['t_name']
             );
         }
 

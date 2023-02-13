@@ -79,6 +79,7 @@ body {
 
 .board-title {
     text-align: center;
+    color: white;
 }
 
 .board-icon {
@@ -95,9 +96,14 @@ body {
 .board-icon:hover {
     cursor: pointer;
 }
+
 .board-img {
     width: 100%;
     height: 100%;
+}
+
+a .board-link {
+    text-decoration: none !important;
 }
 
 @media only screen and (max-device-width: 420px) {

@@ -22,7 +22,7 @@ session_start();
 
             <?php foreach($boards as $board): ?>
             <div class="board">
-                <a href="task_board?id_board=".<?= $board->getIdBoard() ?>>
+                <a class="board-link" href="task_board?id_board=".<?= $board->getIdBoard() ?> >
                     <div class="red-section">
                         <div class="board-icon">
                            <img src="public/uploads/<?= $board->getBackground_img() ?>" class="board-img">

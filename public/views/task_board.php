@@ -26,7 +26,7 @@ session_start();
                         <?= $list -> getLTitle(); ?>
                     </div>
                 </div>
-                    <?php for($i = 0; $i <= $list->countTask(); $i++ ): ?>
+                    <?php foreach($tasks as $task): ?>
                     <div class="task">
                         <div class="task-title">
                             <?= $list -> getTName(); ?>
