@@ -10,4 +10,8 @@ class DefaultController extends AppController
 
     }
 
+    public function session_destroyer() {
+        $this -> render('session_destroyer');
+    }
+
 }

@@ -27,6 +27,8 @@ class BoardController extends AppController {
         $this -> render('boards',['boards' => $boards]);
     }
 
+
+
     public function addBoard() {
         if($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
 

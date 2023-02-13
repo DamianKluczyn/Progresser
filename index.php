@@ -10,4 +10,5 @@ Routing::get('register', 'SecurityController');
 Routing::get('boards', 'BoardController');
 Routing::post('login', 'SecurityController');
 Routing::post('addBoard', 'BoardController');
+Routing::get('session_destroyer', 'DefaultController');
 Routing::run($path);

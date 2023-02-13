@@ -60,4 +60,28 @@ class BoardRepository extends Repository {
 
         return $result;
     }
+
+    public function getLists(int $id_board): array{
+        $result =[];
+
+        $stmt = $this -> database-> connect() -> prepare('
+            SELECT list.order as lorder, t.order as torder, *  FROM public.list JOIN task t on list.id_list = t.id_list_fk WHERE "id_board_FK" = :id_board;
+        ');
+
+        $stmt->bindParam(':id_boartd', $id_board, PDO::PARAM_INT);
+        $stmt -> execute();
+        $boards = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($lists as $list) {
+            $result[] = new Board(
+                $board['title'],
+                $board['background_img'],
+                $user_id
+            );
+        }
+
+        return $result;
+
+    }
+
 }

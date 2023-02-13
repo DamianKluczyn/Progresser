@@ -28,7 +28,7 @@ body {
 }
 .navbar {
     display: flex;
-    padding-right: 2%;
+    padding-right: 5%;
     /* margin-left: auto; */
     justify-content: flex-end;
     height: 80px;
