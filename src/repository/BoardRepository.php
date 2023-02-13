@@ -4,25 +4,6 @@ require_once 'Repository.php';
 require_once __DIR__.'/../models/Board.php';
 
 class BoardRepository extends Repository {
-    public  function getBoard(int $id_board): ?Board {
-
-        $stmt = $this->database->connect()->prepare('
-            SELECT * FROM public.board WHERE id_board = :id_board
-        ');
-        $stmt->bindParam(':id_board', $id_board, PDO::PARAM_INT);
-        $stmt->execute();
-
-        $board = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($board == false) {
-            return null;
-        }
-
-        return new Board(
-            $board['title'],
-            $board['background_img']
-        );
-    }
 
     public function addBoard(Board $board): void {
 
@@ -65,23 +46,30 @@ class BoardRepository extends Repository {
         $result =[];
 
         $stmt = $this -> database-> connect() -> prepare('
-            SELECT list.order as lorder, t.order as torder, *  FROM public.list JOIN task t on list.id_list = t.id_list_fk WHERE "id_board_FK" = :id_board;
+            SELECT l."id_board_FK" as id_board, l.id_list as id_list, l.order as l_order, l.list_name as l_title, t.id_task as id_task, t.priority as t_priority, t.difficulty as t_difficulty, t.name as t_name
+            FROM public.list l JOIN public.task t on l.id_list = t.id_list_fk
+            WHERE "id_board_FK" = :id_board;
         ');
 
-        $stmt->bindParam(':id_boartd', $id_board, PDO::PARAM_INT);
+        $stmt->bindParam(':id_board', $id_board, PDO::PARAM_INT);
         $stmt -> execute();
-        $boards = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $lists = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($lists as $list) {
-            $result[] = new Board(
-                $board['title'],
-                $board['background_img'],
-                $user_id
+            $result[] = new Lists(
+                $list['id_board'],
+                $list['id_list'],
+                $list['l_order'],
+                $list['l_title'],
+                $list['id_task'],
+                $list['t_priority'],
+                $list['t_difficulty'],
+                $list['t_name']
+
             );
         }
 
         return $result;
-
     }
 
 }

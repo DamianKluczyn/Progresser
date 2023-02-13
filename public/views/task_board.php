@@ -23,19 +23,19 @@ session_start();
             <div class="list">
                 <div class="header">
                     <div class="list-title">
-                        <?= $list -> getTitle(); ?>
+                        <?= $list -> getLTitle(); ?>
                     </div>
                 </div>
-                <?php foreach($tasks as $task): ?>
+                    <?php for($i = 0; $i <= $list->countTask(); $i++ ): ?>
                     <div class="task">
                         <div class="task-title">
-                            <?= $task -> getTitle(); ?>
+                            <?= $list -> getTName(); ?>
                         </div>
                         <div class="difficulty">
-                            <?= $task -> getDifficulty(); ?>
+                            <?= $list -> getTDifficulty(); ?>
                         </div>
                     </div>
-                <?php endforeach; ?>
+                    <?php endfor; ?>
             </div>
         <?php endforeach; ?>
     </div>

@@ -11,4 +11,6 @@ Routing::get('boards', 'BoardController');
 Routing::post('login', 'SecurityController');
 Routing::post('addBoard', 'BoardController');
 Routing::get('session_destroyer', 'DefaultController');
+Routing::get('task_board', 'BoardController');
+
 Routing::run($path);

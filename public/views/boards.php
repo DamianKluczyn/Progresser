@@ -22,14 +22,16 @@ session_start();
 
             <?php foreach($boards as $board): ?>
             <div class="board">
-                <div class="red-section">
-                    <div class="board-icon">
-                       <img src="public/uploads/<?= $board->getBackground_img() ?>" class="board-img">
+                <a href="task_board?id_board=".<?= $board->getIdBoard() ?>>
+                    <div class="red-section">
+                        <div class="board-icon">
+                           <img src="public/uploads/<?= $board->getBackground_img() ?>" class="board-img">
+                        </div>
+                        <div class="board-title">
+                            <?= $board -> getTitle(); ?>
+                        </div>
                     </div>
-                    <div class="board-title">
-                        <?= $board -> getTitle(); ?>
-                    </div>
-                </div>
+                </a>
             </div>
             <?php endforeach; ?>
             <div class="board">

@@ -2,6 +2,7 @@
 
 class Board
 {
+
     private $title;
 
     private $background_img;
@@ -42,6 +43,17 @@ class Board
     public function setUserId(string $user_id)
     {
         $this->user_id = $user_id;
+    }
+
+    public function getIdBoard(): string {
+        $stmt = $this->database->connect()->prepare('
+            SELECT id_board FROM public.board WHERE id_created_by = :id_user AND title = :title;
+        ');
+
+        $stmt->bindParam(':id_user', $this -> getUserId(), PDO::PARAM_INT);
+        $stmt->bindParam(':title', $this -> getTitle(), PDO::PARAM_STR);
+        $stmt -> execute();
+        return $stmt->fetchOne(PDO::FETCH_ASSOC);
     }
 
 }
