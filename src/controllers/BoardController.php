@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require_once 'AppController.php';
 require_once __DIR__.'/../models/Board.php';
 require_once __DIR__.'/../repository/BoardRepository.php';
@@ -21,7 +23,6 @@ class BoardController extends AppController {
 
     public function boards()
     {
-        $_SESSION['id_user'];
         $boards = $this->boardRepository->getBoards($_SESSION['id_user']);
         $this -> render('boards',['boards' => $boards]);
     }
@@ -34,7 +35,6 @@ class BoardController extends AppController {
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
 
-            // TODO dodawanie boardow
             $board = new Board($_POST['title'], $_FILES['file']['name'], $_SESSION['id_user']);
             $this->boardRepository->addBoard($board);
 

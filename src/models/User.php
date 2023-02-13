@@ -6,12 +6,11 @@ class User
     private $login;
     private $password;
 
-    public function __construct(string $email, string $login, string $password, $id_user)
+    public function __construct(string $email, string $login, string $password)
     {
         $this->email = $email;
         $this->login = $login;
         $this->password = $password;
-        $this->id_user = $id_user;
     }
 
     public function getEmail(): string
@@ -44,12 +43,5 @@ class User
         $this->password = $password;
     }
 
-    public function getUserId() {
-        return $this -> id_user;
-    }
-
-    public function setUserId($id_user): void {
-        $this->id_user = $id_user;
-    }
 
 }

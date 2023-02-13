@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require_once 'AppController.php';
 require_once __DIR__.'/../models/User.php';
@@ -79,6 +80,7 @@ class SecurityController extends AppController {
             return $this -> render('register', ['messages' => ['Login already taken!']]);
         }
 
+
         $this -> userRepository -> addUser($user);
 
         return $this -> render('login', ['messages' => ['Register successful!']]);
@@ -91,7 +93,5 @@ class SecurityController extends AppController {
     public function decrypt(string $password, string $hashed): bool {
         return password_verify($password, $hashed);
     }
-
-
 
 }

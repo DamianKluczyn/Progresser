@@ -45,15 +45,16 @@ class BoardRepository extends Repository {
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM public.board WHERE id_created_by = :user_id;
         ');
+
         $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $stmt -> execute();
-
         $boards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($boards as $board) {
             $result[] = new Board(
                 $board['title'],
-                $board['background_img']
+                $board['background_img'],
+                $user_id
             );
         }
 

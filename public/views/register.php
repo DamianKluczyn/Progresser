@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -22,7 +26,6 @@
                 <input name="password" type="password" placeholder="Password">
                 <input name="confirmedPassword" type="password" placeholder="Repeat password">
                 <div class="message">
-                    <!-- TODO nie dziala formatowanie -->
                     <?php
                         if(isset($messages)){
                             foreach ($messages as $message){
