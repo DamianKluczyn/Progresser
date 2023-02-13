@@ -40,11 +40,11 @@ class BoardController extends AppController {
 
             return $this->render("boards", [
                 'messages' => $this->messages,
-                'boards' => $this->boardRepository->getBoards()
+                'boards' => $this->boardRepository->getBoards($_SESSION['id_user'])
             ]);
         }
 
-        return $this->render('addBoard', ['messages' => $this->messages]);
+        return $this->render('add_board', ['messages' => $this->messages]);
     }
 
     private function validate(array $file): bool
