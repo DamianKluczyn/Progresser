@@ -14,10 +14,10 @@ session_start();
 </head>
 <body>
     <div class="main-page">
-        <div class="navbar">
-            <img class="navbar-icon icon" src="public/img/settings.svg" alt="logo">
-            <img class="navbar-icon icon" src="public/img/logout.svg" alt="logo">
-        </div>
+
+        <?php
+        include('board_menu.php');
+        ?>
 
         <!-- TODO przy odswiezeniu strony automatycznie sie dodaja kolejne boardy -->
         <div class="add_board_form">
