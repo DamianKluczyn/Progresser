@@ -18,9 +18,6 @@ session_start();
     ?>
 
     <div class="content">
-        <?
-            $id_board = '$_GET[prop_id]';
-        ?>
 
         <?php foreach($lists as $list): ?>
             <div class="list">
@@ -29,14 +26,14 @@ session_start();
                     <?= $list -> getLTitle(); ?>
                 </div>
 
-                <?php foreach($tasks as $task): ?>
+                <?php foreach($tasks[$list -> getLTitle()] as $task): ?>
                 <div class="task">
                     <div class="task-title">
-                        <?= $list -> getTName(); ?>
+                        <?= $task -> getTName(); ?>
                     </div>
-                    <div class = <?= $list -> getTPriority(); ?>></div>
+                    <div class = <?= $task -> getTPriority(); ?>></div>
                     <div class="difficulty">
-                        <?= $list -> getTDifficulty(); ?>
+                        <?= $task -> getTDifficulty(); ?>
                     </div>
                 </div>
                 <?php endforeach; ?>

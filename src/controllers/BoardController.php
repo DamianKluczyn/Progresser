@@ -29,8 +29,11 @@ class BoardController extends AppController {
 
     public function task_board() {
         $lists = $this -> boardRepository -> getLists($_GET['id_board']);
-        //$tasks = $this -> boardRepository -> getTasks();
-        $this -> render('task_board',['lists' => $lists]);
+        $tasks = [];
+        foreach ($lists as $list):
+            $tasks[$list -> getLTitle()] = $this->boardRepository ->getTasks($list -> getIdList());
+        endforeach;
+        $this -> render('task_board',['lists' => $lists, 'tasks' => $tasks]);
     }
 
     public function addBoard() {
