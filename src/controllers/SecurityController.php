@@ -86,6 +86,23 @@ class SecurityController extends AppController {
         return $this -> render('login', ['messages' => ['Register successful!']]);
     }
 
+    public function user_settings() {
+        if(!$this->isPost()) {
+            return $this -> render('user_settings');
+        }
+        if($_POST['premium'] == null){
+            $premium = false;
+        }
+        else{
+            $premium = $_POST['premium'];
+        }
+        $user = $this -> userRepository -> getUserById($_SESSION['id_user']);
+        $user -> setPremium($premium);
+        $this -> userRepository -> setPremium($_SESSION['id_user'], $premium);
+
+        return $this -> render('user_settings', ['messages' => ['Status changed successful!']]);
+    }
+
     public function hash(string $password): string {
         return password_hash($password, PASSWORD_DEFAULT);
     }

@@ -52,6 +52,28 @@ class UserRepository extends Repository {
         }
     }
 
+    public function setPremium($id_user ,bool $premium = false) {
+        $connection = $this -> database -> connect();
+        try {
+            $connection -> beginTransaction();
+            $stmt = $this->database->connect()->prepare('
+            UPDATE public.users SET premium = :premium
+            WHERE id_user = :id_user;
+            ');
+
+            $stmt->bindParam(':premium', $premium, PDO::PARAM_BOOL);
+            $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $connection -> commit();
+            return true;
+
+        } catch (PDOException $exception) {
+            $connection -> rollBack();
+            return false;
+        }
+    }
+
     public function getUserById(string $id_user): ?User {
 
         $stmt = $this->database->connect()->prepare('

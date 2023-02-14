@@ -8,20 +8,19 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="public/CSS/board.css">
-    <script src="public/scripts/boards.js"></script>
-    <title>Boards</title>
+    <link rel="stylesheet" type="text/css" href="public/CSS/style.css">
+    <title>User Settings</title>
 </head>
+
 <body>
-    <div class="main-page">
 
-        <?php
-            include('menu.php');
-        ?>
+    <?php
+        include('user_settings_menu.php');
+    ?>
 
-        <!-- TODO przy odswiezeniu strony automatycznie sie dodaja kolejne boardy -->
-        <div class="add_board_form">
-            <form class="add" action="addBoard" method="post" ENCTYPE="multipart/form-data">
+    <div class="container">
+        <div class="user-settings-container">
+            <form class="change" action="user_settings" method="post">
                 <div class="message">
                     <?php
                     if(isset($messages)){
@@ -31,9 +30,9 @@ session_start();
                     }
                     ?>
                 </div>
-                <input name="title" type="text" placeholder="title">
-                <input name="file" type="file">
-                <button type="submit" class="FileBtn">Add</button>
+                <input name="premium" id="premium-checkbox" type="checkbox" value="premium">
+                <label for="premium-checkbox"> Premium </label><br>
+                <button type="submit" class="SaveBtn">Save</button>
             </form>
         </div>
     </div>
