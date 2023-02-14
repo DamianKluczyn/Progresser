@@ -28,7 +28,8 @@ class BoardController extends AppController {
     }
 
     public function task_board() {
-        $lists = $this -> boardRepository -> getLists($_GET[id_board]);
+        $lists = $this -> boardRepository -> getLists($_GET['id_board']);
+        //$tasks = $this -> boardRepository -> getTasks();
         $this -> render('task_board',['lists' => $lists]);
     }
 
@@ -43,13 +44,13 @@ class BoardController extends AppController {
             $board = new Board("", $_POST['title'], $_FILES['file']['name'], $_SESSION['id_user']);
             $this->boardRepository->addBoard($board);
 
-            $url = "http://$_SERVER[HTTP_HOST]";
-            header("Location: {$url}/boards");
+            /*$url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/boards");*/
 
-            /*return $this->render("boards", [
+            return $this->render("boards", [
                 'messages' => $this->messages,
                 'boards' => $this->boardRepository->getBoards($_SESSION['id_user'])
-            ]);*/
+            ]);
         }
 
         return $this->render('add_board', ['messages' => $this->messages]);

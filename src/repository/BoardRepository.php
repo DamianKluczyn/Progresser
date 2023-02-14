@@ -2,6 +2,8 @@
 
 require_once 'Repository.php';
 require_once __DIR__.'/../models/Board.php';
+require_once __DIR__.'/../models/Lists.php';
+require_once __DIR__.'/../models/Task.php';
 
 class BoardRepository extends Repository {
 
@@ -43,7 +45,7 @@ class BoardRepository extends Repository {
         return $result;
     }
 
-    public function getLists(int $id_board): array{
+    public function getLists($id_board): array{
         $result =[];
 
         $stmt = $this -> database-> connect() -> prepare('
@@ -51,7 +53,7 @@ class BoardRepository extends Repository {
             FROM public.list l
             WHERE "id_board_FK" = :id_board;
         ');
-
+        $id_board = intval($id_board);
         $stmt->bindParam(':id_board', $id_board, PDO::PARAM_INT);
         $stmt -> execute();
         $lists = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -7,7 +7,7 @@ class Board
     private $background_img;
     private $id_user;
 
-    public function __construct($id_board, $title, $background_img, $id_user)
+    public function __construct(int $id_board, $title, $background_img, $id_user)
     {
         $this->id_board = $id_board;
         $this->title = $title;
@@ -45,7 +45,7 @@ class Board
         $this->user_id = $user_id;
     }
 
-    public function getIdBoard()
+    public function getIdBoard(): int
     {
         return $this->id_board;
     }

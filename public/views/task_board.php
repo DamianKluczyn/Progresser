@@ -18,24 +18,33 @@ session_start();
     ?>
 
     <div class="content">
+        <?
+            $id_board = '$_GET[prop_id]';
+        ?>
 
         <?php foreach($lists as $list): ?>
             <div class="list">
-                <div class="header">
-                    <div class="list-title">
-                        <?= $list -> getLTitle(); ?>
+
+                <div class="list-title">
+                    <?= $list -> getLTitle(); ?>
+                </div>
+
+                <?php foreach($tasks as $task): ?>
+                <div class="task">
+                    <div class="task-title">
+                        <?= $list -> getTName(); ?>
+                    </div>
+                    <div class = <?= $list -> getTPriority(); ?>></div>
+                    <div class="difficulty">
+                        <?= $list -> getTDifficulty(); ?>
                     </div>
                 </div>
-                    <?php foreach($tasks as $task): ?>
-                    <div class="task">
-                        <div class="task-title">
-                            <?= $list -> getTName(); ?>
-                        </div>
-                        <div class="difficulty">
-                            <?= $list -> getTDifficulty(); ?>
-                        </div>
-                    </div>
-                    <?php endfor; ?>
+                <?php endforeach; ?>
+
+                <div class="add_task">
+                    ADD
+                </div>
+
             </div>
         <?php endforeach; ?>
     </div>

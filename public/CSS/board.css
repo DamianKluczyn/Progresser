@@ -79,6 +79,7 @@ body {
 
 .board-title {
     text-align: center;
+    font-family: 'Inter';
     color: white;
 }
 
@@ -204,3 +205,36 @@ input {
     outline: none;
 }
 
+.list{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.list-title{
+    font-family: 'Inter';
+    color: white;
+    font-size: 20px !important;
+    text-align: center;
+}
+
+.task{
+    background: rgba(217, 217, 217, 0.6);
+    border-radius: 15px;
+}
+
+.task-title{
+    font-family: 'Inter';
+    font-style: normal;
+    color: black;
+}
+
+.add_task{
+    background: rgba(217, 217, 217, 0.2);
+    border-radius: 30px;
+    font-family: 'Inter';
+    font-style: normal;
+    color: white;
+    text-align: center;
+    padding: 6px 0;
+}
