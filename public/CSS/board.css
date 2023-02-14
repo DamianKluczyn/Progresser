@@ -27,10 +27,7 @@ body {
     width: 100%;
 }
 .navbar {
-    display: flex;
     padding-right: 5%;
-    /* margin-left: auto; */
-    justify-content: flex-end;
     height: 80px;
     display: flex;
     justify-content: flex-end;
@@ -39,6 +36,7 @@ body {
 }
 
 .navbar-icon {
+    padding-left: max(10px, 1%);
     height: 50px;
     width: 50px;
 }
@@ -216,17 +214,22 @@ input {
     color: white;
     font-size: 20px !important;
     text-align: center;
+    margin-bottom: max(10px, 2%);
 }
 
 .task{
     background: rgba(217, 217, 217, 0.6);
     border-radius: 15px;
+    width: max(150px, 10%);
+    margin-bottom: max(10px, 2%);
 }
 
 .task-title{
     font-family: 'Inter';
     font-style: normal;
+    text-align: center;
     color: black;
+    padding: 3px;
 }
 
 .add_task{
