@@ -143,18 +143,19 @@ button.add_board:focus {
     outline: 0;
 }
 
-button.FileBtn {
+button.FileBtn,
+button.AddBtn {
     background: #6d253e;
     border: 3px solid #6d253e !important;
     border-radius: 20px;
     width: 50%;
     line-height: 2.5em;
-    border: none;
     color: white;
     margin: 1em;
     font-size: 20px;
 }
-button.FileBtn:hover {
+button.FileBtn:hover,
+button.AddBtn:hover {
     cursor: pointer;
     color: #6d253e;
     background-color: #d9d9d9;
@@ -232,7 +233,7 @@ input {
     padding: 3px;
 }
 
-.add_task{
+.add_task {
     background: rgba(217, 217, 217, 0.2);
     border-radius: 30px;
     font-family: 'Inter';
@@ -240,4 +241,65 @@ input {
     color: white;
     text-align: center;
     padding: 6px 0;
+}
+
+.add_task_text{
+    font-family: 'Inter';
+    color: black;
+    font-size: 20px !important;
+    text-align: center;
+    margin-bottom: max(10px, 2%);
+}
+
+.difficulty-container,
+.priority-container {
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+    margin-bottom: max(10px, 2%);
+}
+
+.difficulty-bar{
+    width: 35px;
+    height: 20px;
+    border: 3px solid black;
+    box-sizing: border-box;
+    display: block;
+    background: white;
+    cursor: pointer;
+}
+
+.difficulty-one{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+}
+
+.difficulty-two{
+}
+
+.difficulty-three{
+}
+
+.difficulty-four{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.priority{
+    font-family: 'Inter';
+    font-size: 18px !important;
+    cursor: pointer;
+}
+
+.priority-low{
+    border-bottom: 3px solid green;
+}
+
+.priority-mid{
+    border-bottom: 3px solid cornflowerblue;
+}
+
+.priority-ASAP{
+    border-bottom: 3px solid darkred;
 }

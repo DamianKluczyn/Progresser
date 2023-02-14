@@ -37,10 +37,11 @@ session_start();
                     </div>
                 </div>
                 <?php endforeach; ?>
-
-                <div class="add_task">
-                    ADD
-                </div>
+                <a href="add_task?id_board=<?= $_GET['id_board'] ?>?id_list=<?= $list->getIdList() ?>">
+                    <div class="add_task">
+                        ADD
+                    </div>
+                </a>
 
             </div>
         <?php endforeach; ?>

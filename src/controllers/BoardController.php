@@ -59,6 +59,22 @@ class BoardController extends AppController {
         return $this->render('add_board', ['messages' => $this->messages]);
     }
 
+    public function addTask() {
+        if($this->isPost()) {
+
+            $task = new Task();
+            $list = new Lists();
+            $this->boardRepository->addTask();
+
+            return $this->render("task_board", [
+                'messages' => $this->messages,
+                'boards' => $this->boardRepository->getBoards($_SESSION['id_user'])
+            ]);
+        }
+
+        return $this->render('add_task', ['messages' => $this->messages]);
+    }
+
     private function validate(array $file): bool
     {
         if($file['size'] > self::MAX_FILE_SIZE) {
