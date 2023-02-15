@@ -44,18 +44,18 @@ class BoardController extends AppController {
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
 
-            $board = new Board("", $_POST['title'], $_FILES['file']['name'], $_SESSION['id_user']);
+            $board = new Board(-1, $_POST['title'], $_FILES['file']['name'], $_SESSION['id_user']);
             $this->boardRepository->addBoard($board);
 
-            /*$url = "http://$_SERVER[HTTP_HOST]";
-            header("Location: {$url}/boards");*/
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/boards");
 
-            return $this->render("boards", [
+            /*return $this->render("boards", [
                 'messages' => $this->messages,
                 'boards' => $this->boardRepository->getBoards($_SESSION['id_user'])
-            ]);
+            ]);*/
         }
-
+        unset($_POST);
         return $this->render('add_board', ['messages' => $this->messages]);
     }
 
