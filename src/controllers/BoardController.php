@@ -62,14 +62,14 @@ class BoardController extends AppController {
     public function addTask() {
         if($this->isPost()) {
 
-            $task = new Task();
+            /*$task = new Task();
             $list = new Lists();
             $this->boardRepository->addTask();
 
             return $this->render("task_board", [
                 'messages' => $this->messages,
                 'boards' => $this->boardRepository->getBoards($_SESSION['id_user'])
-            ]);
+            ]);*/
         }
 
         return $this->render('add_task', ['messages' => $this->messages]);

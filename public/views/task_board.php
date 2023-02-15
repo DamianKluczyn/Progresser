@@ -37,7 +37,7 @@ session_start();
                     </div>
                 </div>
                 <?php endforeach; ?>
-                <a href="add_task?id_board=<?= $_GET['id_board'] ?>?id_list=<?= $list->getIdList() ?>">
+                <a href="addTask?id_board=<?= $_GET['id_board'] ?>&id_list=<?= $list->getIdList() ?>">
                     <div class="add_task">
                         ADD
                     </div>
