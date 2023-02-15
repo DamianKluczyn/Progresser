@@ -96,4 +96,35 @@ class BoardRepository extends Repository {
         return $result;
     }
 
+    public function countBoard(int $id_user): bool{
+        $stmt = $this -> database-> connect() -> prepare('
+            SELECT premium FROM users u
+            WHERE u.id_user = :id_user;
+            ');
+
+        $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+        $stmt -> execute();
+
+        $premium = $stmt->fetchAll(PDO::PARAM_BOOL);
+
+        if(!$premium){
+            $stmt = $this -> database-> connect() -> prepare('
+            SELECT count(id_board) FROM board b JOIN users u on b.id_created_by = u.id_user
+            WHERE b.id_created_by = :id_user AND u.premium = false;
+            ');
+
+            $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+            $stmt -> execute();
+
+            $count = $stmt->fetchAll(PDO::FETCH_NUM);
+
+            if($count >= 5){
+                return false;
+            }
+        }
+
+        return true;
+
+    }
+
 }

@@ -24,10 +24,8 @@ session_start();
             <form class="add" action="addBoard" method="post" ENCTYPE="multipart/form-data">
                 <div class="message">
                     <?php
-                    if(isset($messages)){
-                        foreach ($messages as $message){
-                            echo $message;
-                        }
+                    if(isset($message)){
+                        echo $message;
                     }
                     ?>
                 </div>

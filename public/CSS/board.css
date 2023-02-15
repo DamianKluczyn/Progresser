@@ -26,6 +26,13 @@ body {
 .logo img {
     width: 100%;
 }
+
+.message {
+    font-size: 15px;
+    text-align: center;
+    color: red;
+}
+
 .navbar {
     padding-right: 5%;
     height: 80px;
@@ -76,8 +83,9 @@ body {
 }
 
 .board-title {
-    text-align: center;
     font-family: 'Inter';
+    font-style: normal;
+    text-align: center;
     color: white;
 }
 
@@ -180,7 +188,8 @@ button.AddBtn:hover {
     height: 70%;
 }
 
-form.add {
+form.add,
+.board_settings{
     padding-top: 3vh;
     padding-bottom: 3vh;
     width: max(30vw, 400px);
@@ -305,3 +314,4 @@ input {
 .priority-ASAP{
     border-bottom: 3px solid darkred;
 }
+

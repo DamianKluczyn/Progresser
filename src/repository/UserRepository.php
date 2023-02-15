@@ -112,5 +112,4 @@ class UserRepository extends Repository {
         return $userId['id_user'];
     }
 
-
 }

@@ -37,7 +37,7 @@ class BoardController extends AppController {
     }
 
     public function addBoard() {
-        if($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
+        if($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file']) && $this->boardRepository ->countBoard($_SESSION['id_user'])) {
 
             move_uploaded_file(
                 $_FILES['file']['tmp_name'],
@@ -55,8 +55,7 @@ class BoardController extends AppController {
                 'boards' => $this->boardRepository->getBoards($_SESSION['id_user'])
             ]);*/
         }
-        unset($_POST);
-        return $this->render('add_board', ['messages' => $this->messages]);
+        return $this->render('add_board', ['message' => "To add more than 5 boards you must be premium user and you need to fill all inputs!"]);
     }
 
     public function addTask() {
@@ -88,6 +87,10 @@ class BoardController extends AppController {
         }
 
         return true;
+    }
+
+    public function board_settings(){
+        return $this -> render('board_settings');
     }
 
 }
