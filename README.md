@@ -37,8 +37,15 @@ List the ready features here:
 - Each list can contain task - with difficulty and priority.
 
 
+
 ## Screenshots
 <!-- ![Example screenshot](./img/screenshot.png) -->
+![SS](./img/login.PNG)
+![SS](./img/register.PNG)
+![SS](./img/boards.PNG)
+![SS](./img/addBoard.PNG)
+![SS](./img/board.PNG)
+![SS](./img/addTask.PNG)
 
 
 
@@ -53,6 +60,8 @@ Now you can go to "localhost:8080" in your browser and enjoy application.
 Room for improvement:
 - Add another user to your board.
 - Add search bar for boards.
+- Add board settings.
+- Add lists
 
 
 
