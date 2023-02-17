@@ -13,7 +13,8 @@ class BoardRepository extends Repository {
             $connection -> beginTransaction();
             $stmt = $connection->prepare('
             INSERT INTO public.board (title, background_img, id_created_by)
-            VALUES(?, ?, ?);
+            VALUES(?, ?, ?)
+            RETURNING id_board; 
             ');
 
             $stmt->execute([
@@ -22,11 +23,7 @@ class BoardRepository extends Repository {
                 $board->getUserId()
             ]);
 
-            $stmt = $connection->prepare('
-            SELECT id_board FROM public.board WHERE title=:title AND id_created_by=:id_user;
-            ');
-
-            $id_board = $stmt->fetchAll(PDO::PARAM_INT);
+            $id_board = $stmt->fetch(PDO::FETCH_ASSOC);
 
             $stmt=$connection->prepare('
             INSERT INTO public.user_board (id_user_fk, id_board_fk)
@@ -35,7 +32,7 @@ class BoardRepository extends Repository {
 
             $stmt->execute([
                 $board->getUserId(),
-                $id_board
+                $id_board['id_board']
             ]);
 
             $connection -> commit();
