@@ -7,19 +7,44 @@ require_once __DIR__.'/../models/Task.php';
 
 class BoardRepository extends Repository {
 
-    public function addBoard(Board $board): void {
-
-        $stmt = $this->database->connect()->prepare('
+    public function addBoard(Board $board): bool {
+        $connection = $this -> database -> connect();
+        try {
+            $connection -> beginTransaction();
+            $stmt = $connection->prepare('
             INSERT INTO public.board (title, background_img, id_created_by)
-            VALUES(?, ?, ?)
-        ');
+            VALUES(?, ?, ?);
+            ');
 
+            $stmt->execute([
+                $board->getTitle(),
+                $board->getBackground_img(),
+                $board->getUserId()
+            ]);
 
-        $stmt->execute([
-            $board->getTitle(),
-            $board->getBackground_img(),
-            $board->getUserId()
-        ]);
+            $stmt = $connection->prepare('
+            SELECT id_board FROM public.board WHERE title=:title AND id_created_by=:id_user;
+            ');
+
+            $id_board = $stmt->fetchAll(PDO::PARAM_INT);
+
+            $stmt=$connection->prepare('
+            INSERT INTO public.user_board (id_user_fk, id_board_fk)
+            VALUES(?, ?);
+            ');
+
+            $stmt->execute([
+                $board->getUserId(),
+                $id_board
+            ]);
+
+            $connection -> commit();
+            return true;
+
+        } catch (PDOException $exception) {
+            $connection -> rollBack();
+            return false;
+        }
     }
 
     public  function getBoards(int $user_id): array {
@@ -127,18 +152,29 @@ class BoardRepository extends Repository {
 
     }
 
-    public function addTask(Task $task){
-        $stmt = $this->database->connect()->prepare('
+    public function addTask(Task $task):bool{
+        $connection = $this -> database -> connect();
+        try {
+            $connection -> beginTransaction();
+            $stmt = $connection->prepare('
             INSERT INTO public.task (id_list_fk, priority, difficulty, name)
             VALUES(?,?,?,?)
         ');
 
-        $stmt->execute([
-            $task->getIdList(),
-            $task->getTPriority(),
-            $task->getTDifficulty(),
-            $task->getTName()
-        ]);
+            $stmt->execute([
+                $task->getIdList(),
+                $task->getTPriority(),
+                $task->getTDifficulty(),
+                $task->getTName()
+            ]);
+
+            $connection -> commit();
+            return true;
+
+        } catch (PDOException $exception) {
+            $connection -> rollBack();
+            return false;
+        }
     }
 
 }

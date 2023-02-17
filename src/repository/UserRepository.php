@@ -32,7 +32,7 @@ class UserRepository extends Repository {
         $connection = $this -> database -> connect();
         try {
             $connection -> beginTransaction();
-            $stmt = $this->database->connect()->prepare('
+            $stmt = $connection->prepare('
             INSERT INTO users (email, login, password)
             VALUES (?, ?, ?)
             ');
@@ -56,7 +56,7 @@ class UserRepository extends Repository {
         $connection = $this -> database -> connect();
         try {
             $connection -> beginTransaction();
-            $stmt = $this->database->connect()->prepare('
+            $stmt = $connection->prepare('
             UPDATE public.users SET premium = :premium
             WHERE id_user = :id_user;
             ');
