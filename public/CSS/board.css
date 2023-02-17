@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    font-family: 'Inter';
     background-size: 100%;
     background: linear-gradient(
             116.82deg,
@@ -83,7 +84,6 @@ body {
 }
 
 .board-title {
-    font-family: 'Inter';
     font-style: normal;
     text-align: center;
     color: white;
@@ -167,7 +167,6 @@ button.AddBtn:hover {
     content: "+";
     font-size:max(100px, 15vw);
     font-weight:bold;
-    font-family:courier;
     color:white;
 }
 .add_board_form {
@@ -206,11 +205,10 @@ input {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    width: max(200px, 18%);
+    width: max(150px, 12%);
 }
 
 .list-title{
-    font-family: 'Inter';
     color: white;
     font-size: 20px !important;
     text-align: center;
@@ -225,8 +223,9 @@ input {
 }
 
 .task-title{
-    font-family: 'Inter';
+    font-size: 20px;
     font-style: normal;
+    font-weight:bold;
     text-align: center;
     color: black;
     padding: 3px;
@@ -236,7 +235,6 @@ input {
     background: rgba(217, 217, 217, 0.2);
     width: 100%;
     border-radius: 30px;
-    font-family: 'Inter';
     font-style: normal;
     color: white;
     text-align: center;
@@ -244,7 +242,7 @@ input {
 }
 
 .add_task_text{
-    font-family: 'Inter';
+    font-weight: bold;
     color: black;
     font-size: 20px !important;
     text-align: center;
