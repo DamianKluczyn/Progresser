@@ -32,12 +32,10 @@ session_start();
                         <?= $task -> getTName(); ?>
                     </div>
                     <div class = <?= $task -> getTPriority(); ?>></div>
-                    <div class="difficulty">
-                        <?= $task -> getTDifficulty(); ?>
-                    </div>
+                    <div class="difficulty <?= $task -> getTDifficulty(); ?>"></div>
                 </div>
                 <?php endforeach; ?>
-                <a href="addTask?id_board=<?= $_GET['id_board'] ?>&id_list=<?= $list->getIdList() ?>">
+                <a href="addTask<? setcookie('id_list', $list->getIdList()); ?>">
                     <div class="add_task">
                         ADD
                     </div>

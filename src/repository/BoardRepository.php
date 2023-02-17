@@ -127,4 +127,18 @@ class BoardRepository extends Repository {
 
     }
 
+    public function addTask(Task $task){
+        $stmt = $this->database->connect()->prepare('
+            INSERT INTO public.task (id_list_fk, priority, difficulty, name)
+            VALUES(?,?,?,?)
+        ');
+
+        $stmt->execute([
+            $task->getIdList(),
+            $task->getTPriority(),
+            $task->getTDifficulty(),
+            $task->getTName()
+        ]);
+    }
+
 }
