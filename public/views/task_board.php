@@ -28,14 +28,18 @@ session_start();
 
                 <?php foreach($tasks[$list -> getLTitle()] as $task): ?>
                 <div class="task">
-                    <div class="task-title">
+                    <div class="task-title <?= $task -> getNamePriority($task -> getTPriority()); ?>">
                         <?= $task -> getTName(); ?>
                     </div>
-                    <div class = <?= $task -> getTPriority(); ?>></div>
-                    <div class="difficulty <?= $task -> getTDifficulty(); ?>"></div>
+                    <div class = "difficulty-container-tasks">
+                        <div class="difficulty-bar difficulty-one <?= $task -> getNameDifficulty($task -> getTDifficulty()); ?>"></div>
+                        <div class="difficulty-bar difficulty-two <?= $task -> getNameDifficulty($task -> getTDifficulty()); ?>"></div>
+                        <div class="difficulty-bar difficulty-three <?= $task -> getNameDifficulty($task -> getTDifficulty()); ?>"></div>
+                        <div class="difficulty-bar difficulty-four <?= $task -> getNameDifficulty($task -> getTDifficulty()); ?>"></div>
+                    </div>
                 </div>
                 <?php endforeach; ?>
-                <a href="addTask<? setcookie('id_list', $list->getIdList()); ?>">
+                <a href="addTask?id_list=<?= $list->getIdList(); ?>">
                     <div class="add_task">
                         ADD
                     </div>

@@ -28,7 +28,8 @@ class BoardController extends AppController {
     }
 
     public function task_board() {
-        $lists = $this -> boardRepository -> getLists($_COOKIE['id_board']);
+        $lists = $this -> boardRepository -> getLists($_GET['id_board']);
+        setcookie('id_board', $_GET['id_board']);
         $tasks = [];
         foreach ($lists as $list):
             $tasks[$list -> getLTitle()] = $this->boardRepository ->getTasks($list -> getIdList());
@@ -59,10 +60,12 @@ class BoardController extends AppController {
     }
 
     public function addTask() {
+        setcookie('id_list', $_GET['id_list']);
         if($this->isPost() && isset($_COOKIE['difficulty']) && isset($_COOKIE['priority'])  && $_POST['task_name'] != null) {
             $task = new Task($_COOKIE['id_list'],-1,$_COOKIE['priority'], $_COOKIE['difficulty'], $_POST['task_name']);
             $this->boardRepository->addTask($task);
-
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/task_board?id_board={$_COOKIE['id_board']}");
         }
 
         return $this->render('add_task', ['messages' => $this->messages]);

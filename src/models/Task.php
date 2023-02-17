@@ -67,4 +67,27 @@ class Task
     {
         $this->t_name = $t_name;
     }
+
+    public function getNamePriority($t_priority): string{
+        if($t_priority == 1){
+            return "priority-low";
+        } elseif ($t_priority == 2){
+            return "priority-mid";
+        }
+        else{
+            return "priority-ASAP";
+        }
+    }
+
+    public function getNameDifficulty($t_difficulty): string{
+        if($t_difficulty == 1){
+            return "one";
+        } elseif ($t_difficulty == 2){
+            return "two";
+        } elseif ($t_difficulty == 3) {
+            return "three";
+        } else{
+            return "four";
+        }
+    }
 }

@@ -15,13 +15,11 @@ session_start();
     <div class="main-page">
 
         <?php
-        include('board_menu.php');
+        include('settings_menu.php');
         ?>
 
         <div class="board_settings">
-
                 <h1>Work in progress...</h1>
-
         </div>
 
     </div>
